@@ -1,13 +1,43 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const cubeContainer = document.getElementById("cube-container");
-  const cube = document.getElementById("cube");
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("puzzle-container");
+  const imageUrl = "404.webp"; // Replace with your image URL
+  const rows = 4; // Number of rows in the puzzle
+  const cols = 4; // Number of columns in the puzzle
 
-  // Add event listeners for mouse enter and leave
-  cubeContainer.addEventListener("mouseenter", function () {
-    cube.classList.add("flip");
-  });
+  const pieceSize = 100; // Adjust based on container size
+  const totalPieces = rows * cols;
 
-  cubeContainer.addEventListener("mouseleave", function () {
-    cube.classList.remove("flip");
-  });
+  for (let i = 0; i < totalPieces; i++) {
+    const piece = document.createElement("div");
+    piece.className = "puzzle-piece";
+
+    const front = document.createElement("div");
+    front.className = "front";
+    const frontImg = document.createElement("img");
+    frontImg.src = imageUrl;
+    front.appendChild(frontImg);
+
+    const back = document.createElement("div");
+    back.className = "back";
+    const backImg = document.createElement("img");
+    backImg.src = imageUrl; // Optional: Use different image or same
+    back.appendChild(backImg);
+
+    piece.appendChild(front);
+    piece.appendChild(back);
+
+    // Positioning each piece
+    const row = Math.floor(i / cols);
+    const col = i % cols;
+
+    piece.style.width = `${100 / cols}%`;
+    piece.style.height = `${100 / rows}%`;
+    piece.style.top = `${row * (100 / rows)}%`;
+    piece.style.left = `${col * (100 / cols)}%`;
+    piece.style.backgroundPosition = `-${col * (100 / cols)}% -${
+      row * (100 / rows)
+    }%`;
+
+    container.appendChild(piece);
+  }
 });

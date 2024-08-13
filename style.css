@@ -1,4 +1,3 @@
-/* Basic setup */
 body,
 html {
   margin: 0;
@@ -10,75 +9,40 @@ html {
   background-color: #f0f0f0;
 }
 
-.cube-container {
-  perspective: 1200px; /* Ensures the 3D effect is visible */
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.cube {
-  width: 200px;
-  height: 200px;
+.puzzle-container {
   position: relative;
-  transform-style: preserve-3d; /* Enables 3D space for child elements */
-  transition: transform 1s; /* Smooth transition */
+  width: 80vmin;
+  height: 80vmin;
+  perspective: 1000px;
 }
 
-/* Responsive setup */
-@media (max-width: 600px) {
-  .cube {
-    width: 150px;
-    height: 150px;
-  }
-}
-
-@media (max-width: 400px) {
-  .cube {
-    width: 100px;
-    height: 100px;
-  }
-}
-
-.cube-face {
+.puzzle-piece {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden; /* Hides the back side when facing away */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 25%;
+  height: 25%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  overflow: hidden;
 }
 
-.cube-face img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.puzzle-piece img {
+  position: absolute;
+  width: 400%; /* Adjust this to cover the image area */
+  height: 400%;
+  top: -100%;
+  left: -100%;
+  backface-visibility: hidden;
 }
 
-/* Cube faces */
-.front {
-  transform: rotateY(0deg) translateZ(100px);
-}
-.right {
-  transform: rotateY(90deg) translateZ(100px);
-}
-.back {
-  transform: rotateY(180deg) translateZ(100px);
-}
-.left {
-  transform: rotateY(-90deg) translateZ(100px);
-}
-.top {
-  transform: rotateX(90deg) translateZ(100px);
-}
-.bottom {
-  transform: rotateX(-90deg) translateZ(100px);
+.puzzle-piece.front {
+  transform: rotateY(0deg);
 }
 
-/* JavaScript will toggle the flip effect */
-.cube.flip {
-  transform: rotateY(180deg); /* Adjust for desired flip effect */
+.puzzle-piece.back {
+  transform: rotateY(180deg);
+  z-index: -1;
+}
+
+.puzzle-piece:hover {
+  transform: rotateY(180deg);
 }
