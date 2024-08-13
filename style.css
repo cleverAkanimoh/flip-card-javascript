@@ -1,0 +1,96 @@
+.image-container {
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    100px
+  ); /* Adjust according to the number of cubes per row */
+  grid-template-rows: repeat(
+    4,
+    100px
+  ); /* Adjust according to the number of cubes per column */
+  perspective: 1000px; /* Adds depth to the 3D effect */
+}
+
+.cube {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.cube-front,
+.cube-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.cube-front {
+  background-image: url("404.webp");
+  background-size: 400px 400px; /* Adjust according to your image size */
+  background-position: center;
+}
+
+.cube-back {
+  background-color: #333; /* Or use a different image */
+  transform: rotateY(180deg);
+}
+
+/* Position each cube's background image */
+.cube:nth-child(1) .cube-front {
+  background-position: 0 0;
+}
+.cube:nth-child(2) .cube-front {
+  background-position: -100px 0;
+}
+.cube:nth-child(3) .cube-front {
+  background-position: -200px 0;
+}
+.cube:nth-child(4) .cube-front {
+  background-position: -300px 0;
+}
+
+.cube:nth-child(5) .cube-front {
+  background-position: 0 -100px;
+}
+.cube:nth-child(6) .cube-front {
+  background-position: -100px -100px;
+}
+.cube:nth-child(7) .cube-front {
+  background-position: -200px -100px;
+}
+.cube:nth-child(8) .cube-front {
+  background-position: -300px -100px;
+}
+
+.cube:nth-child(9) .cube-front {
+  background-position: 0 -200px;
+}
+.cube:nth-child(10) .cube-front {
+  background-position: -100px -200px;
+}
+.cube:nth-child(11) .cube-front {
+  background-position: -200px -200px;
+}
+.cube:nth-child(12) .cube-front {
+  background-position: -300px -200px;
+}
+
+.cube:nth-child(13) .cube-front {
+  background-position: 0 -300px;
+}
+.cube:nth-child(14) .cube-front {
+  background-position: -100px -300px;
+}
+.cube:nth-child(15) .cube-front {
+  background-position: -200px -300px;
+}
+.cube:nth-child(16) .cube-front {
+  background-position: -300px -300px;
+}
+
+.cube:hover {
+  transform: rotateY(180deg);
+}
