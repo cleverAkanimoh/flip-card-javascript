@@ -1,96 +1,84 @@
-.image-container {
-  display: grid;
-  grid-template-columns: repeat(
-    4,
-    100px
-  ); /* Adjust according to the number of cubes per row */
-  grid-template-rows: repeat(
-    4,
-    100px
-  ); /* Adjust according to the number of cubes per column */
-  perspective: 1000px; /* Adds depth to the 3D effect */
+/* Basic setup */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+.cube-container {
+  perspective: 1200px; /* Ensures the 3D effect is visible */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cube {
-  position: relative;
   width: 200px;
   height: 200px;
-  transform-style: preserve-3d;
-  transition: transform 0.5s;
+  position: relative;
+  transform-style: preserve-3d; /* Enables 3D space for child elements */
+  transition: transform 1s; /* Smooth transition */
 }
 
-.cube-front,
-.cube-back {
+/* Responsive setup */
+@media (max-width: 600px) {
+  .cube {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 400px) {
+  .cube {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.cube-face {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden;
+  backface-visibility: hidden; /* Hides the back side when facing away */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.cube-front {
-  background-image: url("404.webp");
-  background-size: 400px 400px; /* Adjust according to your image size */
-  background-position: center;
+.cube-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.cube-back {
-  background-color: #333; /* Or use a different image */
-  transform: rotateY(180deg);
+/* Cube faces */
+.front {
+  transform: rotateY(0deg) translateZ(100px);
+}
+.right {
+  transform: rotateY(90deg) translateZ(100px);
+}
+.back {
+  transform: rotateY(180deg) translateZ(100px);
+}
+.left {
+  transform: rotateY(-90deg) translateZ(100px);
+}
+.top {
+  transform: rotateX(90deg) translateZ(100px);
+}
+.bottom {
+  transform: rotateX(-90deg) translateZ(100px);
 }
 
-/* Position each cube's background image */
-.cube:nth-child(1) .cube-front {
-  background-position: 0 0;
-}
-.cube:nth-child(2) .cube-front {
-  background-position: -100px 0;
-}
-.cube:nth-child(3) .cube-front {
-  background-position: -200px 0;
-}
-.cube:nth-child(4) .cube-front {
-  background-position: -300px 0;
-}
-
-.cube:nth-child(5) .cube-front {
-  background-position: 0 -100px;
-}
-.cube:nth-child(6) .cube-front {
-  background-position: -100px -100px;
-}
-.cube:nth-child(7) .cube-front {
-  background-position: -200px -100px;
-}
-.cube:nth-child(8) .cube-front {
-  background-position: -300px -100px;
-}
-
-.cube:nth-child(9) .cube-front {
-  background-position: 0 -200px;
-}
-.cube:nth-child(10) .cube-front {
-  background-position: -100px -200px;
-}
-.cube:nth-child(11) .cube-front {
-  background-position: -200px -200px;
-}
-.cube:nth-child(12) .cube-front {
-  background-position: -300px -200px;
-}
-
-.cube:nth-child(13) .cube-front {
-  background-position: 0 -300px;
-}
-.cube:nth-child(14) .cube-front {
-  background-position: -100px -300px;
-}
-.cube:nth-child(15) .cube-front {
-  background-position: -200px -300px;
-}
-.cube:nth-child(16) .cube-front {
-  background-position: -300px -300px;
-}
-
-.cube:hover {
-  transform: rotateY(180deg);
+/* JavaScript will toggle the flip effect */
+.cube.flip {
+  transform: rotateY(180deg); /* Adjust for desired flip effect */
 }
