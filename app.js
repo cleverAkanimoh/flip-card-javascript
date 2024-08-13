@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("puzzle-container");
   const imageUrl = "404.webp"; // Replace with your image URL
-  const rows = 4; // Number of rows in the puzzle
-  const cols = 4; // Number of columns in the puzzle
+  const rows = 4; // Number of rows
+  const cols = 4; // Number of columns
 
-  const pieceSize = 100; // Adjust based on container size
+  const pieceSize = 100; // Percentage for each piece
   const totalPieces = rows * cols;
 
   for (let i = 0; i < totalPieces; i++) {
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const back = document.createElement("div");
     back.className = "back";
     const backImg = document.createElement("img");
-    backImg.src = imageUrl; // Optional: Use different image or same
+    backImg.src = imageUrl;
     back.appendChild(backImg);
 
     piece.appendChild(front);

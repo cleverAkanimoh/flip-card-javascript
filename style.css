@@ -11,26 +11,26 @@ html {
 
 .puzzle-container {
   position: relative;
-  width: 80vmin;
-  height: 80vmin;
+  width: 60vmin; /* Adjust based on desired size */
+  height: 60vmin; /* Adjust based on desired size */
   perspective: 1000px;
 }
 
 .puzzle-piece {
   position: absolute;
-  width: 25%;
-  height: 25%;
+  width: 25%; /* Adjust based on number of pieces */
+  height: 25%; /* Adjust based on number of pieces */
+  overflow: hidden;
   transform-style: preserve-3d;
   transition: transform 0.5s;
-  overflow: hidden;
 }
 
 .puzzle-piece img {
   position: absolute;
-  width: 400%; /* Adjust this to cover the image area */
-  height: 400%;
-  top: -100%;
+  width: 400%; /* Adjust based on number of pieces */
+  height: 400%; /* Adjust based on number of pieces */
   left: -100%;
+  top: -100%;
   backface-visibility: hidden;
 }
 
